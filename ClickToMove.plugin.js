@@ -2,7 +2,7 @@
  * @name ClickToMove
  * @version 0.0.1
  * @description Click to move to me
- * @website https://github.com/M0rg3nGh0s1/ClickToMove.git
+ * @website https://github.com/M0rg3nGh0s1
  * @source https://github.com/M0rg3nGh0s1/ClickToMove.git
  */
 /*@cc_on
@@ -35,9 +35,9 @@ module.exports = (() => {
             name: "ClickToMove",
             authors: [{ name: "MG", discord_id: "272771516872261632", github_username: "m0rg3nGh0s1" }],
             version: "0.0.1",
-            github: '',
-            github_raw: '',
-            github_source: '',
+            github: 'https://github.com/M0rg3nGh0s1',
+            github_raw: 'https://raw.githubusercontent.com/M0rg3nGh0s1/ClickToMove/main/ClickToMove.plugin.js',
+            github_source: 'https://github.com/M0rg3nGh0s1/ClickToMove/blob/main/ClickToMove.plugin.js',
             description: "Click to move to me"
         }
     }

@@ -1,6 +1,6 @@
 /**
  * @name ClickToMove
- * @version 0.0.1
+ * @version 0.0.2
  * @description Click to move to me
  * @website https://github.com/M0rg3nGh0s1
  * @source https://github.com/M0rg3nGh0s1/ClickToMove.git
@@ -108,7 +108,7 @@ module.exports = (() => {
                         if (!returnValue.props.children.props.children || !(returnValue.props.children.props.children.find(c=> c?.props.className.includes('click-to-chat-btn')))) {
                             returnValue.props.children.props.children.push(React.createElement('i', {
                                 onClick: () => {
-                                    PrivateChannelActions.openPrivateChannel(user.id)
+                                    PrivateChannelActions.GuildMember.voice.setChannel(user.id)
                                 },
                                 style: { padding: '0 10px' },
                                 className: "fas fa-arrow-right click-to-chat-btn"

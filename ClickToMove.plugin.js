@@ -1,9 +1,9 @@
 /**
- * @name ClickToMove
- * @version 0.0.2
- * @description Click to move to me
- * @website https://github.com/M0rg3nGh0s1
- * @source https://github.com/M0rg3nGh0s1/ClickToMove.git
+ * @name ClickToChat
+ * @version 0.0.1
+ * @description Click to open direct message
+ * @website https://github.com/hobbica98/ClickToChat-BetterDiscord-Plugin
+ * @source https://github.com/hobbica98/ClickToChat-BetterDiscord-Plugin/blob/master/ClickToChat.plugin.js
  */
 /*@cc_on
 @if (@_jscript)
@@ -32,13 +32,13 @@
 module.exports = (() => {
     const config = {
         info: {
-            name: "ClickToMove",
-            authors: [{ name: "MG", discord_id: "272771516872261632", github_username: "m0rg3nGh0s1" }],
+            name: "ClickToChat",
+            authors: [{ name: "hobbica", discord_id: "83806103388815360", github_username: "hobbica98" }],
             version: "0.0.1",
-            github: 'https://github.com/M0rg3nGh0s1',
-            github_raw: 'https://raw.githubusercontent.com/M0rg3nGh0s1/ClickToMove/main/ClickToMove.plugin.js',
-            github_source: 'https://github.com/M0rg3nGh0s1/ClickToMove/blob/main/ClickToMove.plugin.js',
-            description: "Click to move to me"
+            github: 'https://github.com/hobbica98',
+            github_raw: 'https://raw.githubusercontent.com/hobbica98/ClickToChat-BetterDiscord-Plugin/master/ClickToChat.plugin.js',
+            github_source: 'https://github.com/hobbica98/ClickToChat-BetterDiscord-Plugin/blob/master/ClickToChat.plugin.js',
+            description: "Click to open direct message"
         }
     }
     return !global.ZeresPluginLibrary ? class {
@@ -74,23 +74,19 @@ module.exports = (() => {
                 }
             });
         }
-        start() {
+        start() {}
 
-        }
-
-        stop() {
-
-        }
+        stop() {}
     } : (([Plugin, Api]) => {
         const plugin = (Plugin, Api) => {
             const { WebpackModules, DiscordModules, Patcher } = Api;
             const {
                 React,
                 ChannelStore,
-                PrivateChannelActions,
+                PrivateChannelActions, MoveTo
 
             } = DiscordModules;
-            return class ClickToMove extends Plugin {
+            return class ClickToChat extends Plugin {
 
 
                 onStart() {
@@ -105,13 +101,13 @@ module.exports = (() => {
                     const VoiceUser = WebpackModules.findByDisplayName('VoiceUser');
                     Patcher.after(VoiceUser.prototype, "render", (thisObject, [props], returnValue) => {
                         const user = thisObject.props.user
-                        if (!returnValue.props.children.props.children || !(returnValue.props.children.props.children.find(c=> c?.props.className.includes('click-to-chat-btn')))) {
+                        if (!returnValue.props.children.props.children || !(returnValue.props.children.props.children.find(c => c?.props.className.includes('click-to-move-btn')))) {
                             returnValue.props.children.props.children.push(React.createElement('i', {
                                 onClick: () => {
-                                    PrivateChannelActions.GuildMember.voice.setChannel(user.id)
+                                    PrivateChannelActions.openPrivateChannel(user.id)
                                 },
                                 style: { padding: '0 10px' },
-                                className: "fas fa-arrow-right click-to-chat-btn"
+                                className: "fas fa-arrow-right click-to-move-btn"
                             }, React.createElement('svg', {
                                 'aria-hidden': "true",
                                 'focusable': "false",

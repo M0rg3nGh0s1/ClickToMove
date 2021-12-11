@@ -90,7 +90,7 @@ module.exports = (() => {
                 PrivateChannelActions,
 
             } = DiscordModules;
-            return class ClickToChat extends Plugin {
+            return class ClickToMove extends Plugin {
 
 
                 onStart() {

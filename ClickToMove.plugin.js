@@ -74,9 +74,13 @@ module.exports = (() => {
                 }
             });
         }
-        start() {}
+        start() {
 
-        stop() {}
+        }
+
+        stop() {
+
+        }
     } : (([Plugin, Api]) => {
         const plugin = (Plugin, Api) => {
             const { WebpackModules, DiscordModules, Patcher } = Api;
@@ -101,7 +105,7 @@ module.exports = (() => {
                     const VoiceUser = WebpackModules.findByDisplayName('VoiceUser');
                     Patcher.after(VoiceUser.prototype, "render", (thisObject, [props], returnValue) => {
                         const user = thisObject.props.user
-                        if (!returnValue.props.children.props.children || !(returnValue.props.children.props.children.find(c => c ? .props.className.includes('click-to-chat-btn')))) {
+                        if (!returnValue.props.children.props.children || !(returnValue.props.children.props.children.find(c=> c?.props.className.includes('click-to-chat-btn')))) {
                             returnValue.props.children.props.children.push(React.createElement('i', {
                                 onClick: () => {
                                     PrivateChannelActions.openPrivateChannel(user.id)

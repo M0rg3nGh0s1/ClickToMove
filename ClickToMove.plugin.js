@@ -104,7 +104,7 @@ module.exports = (() => {
                         if (!returnValue.props.children.props.children || !(returnValue.props.children.props.children.find(c => c?.props.className.includes('click-to-move-btn')))) {
                             returnValue.props.children.props.children.push(React.createElement('i', {
                                 onClick: () => {
-                                    PrivateChannelActions.openPrivateChannel(user.id)
+                                    // PrivateChannelActions.openPrivateChannel(user.id)
                                 },
                                 style: { padding: '0 10px' },
                                 className: "fas fa-arrow-right click-to-move-btn"
